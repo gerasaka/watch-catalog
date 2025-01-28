@@ -1,0 +1,11 @@
+.subtitle {
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+}
+
+.catalogueContainer {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
