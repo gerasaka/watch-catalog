@@ -1,9 +1,14 @@
 @use './mixins' as bp;
+@use './utils';
 
 :root {
   --background: #f4f4f5;
   --foreground: #171717;
   --text-light: #71717a;
+
+  --red: #eb5757;
+  --green: #18a661;
+  --orange: #f4a403;
 }
 
 // @media (prefers-color-scheme: dark) {
