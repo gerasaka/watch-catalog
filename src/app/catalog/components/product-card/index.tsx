@@ -1,6 +1,7 @@
 import { IconLabel } from '@/icons/label';
 import { IconStarSolid } from '@/icons/star';
 import { IProduct } from '@/utils/types';
+import Button from '../button';
 import styles from './styles.module.scss';
 
 export default async function ProductCard({ product }: { product: IProduct }) {
@@ -51,7 +52,7 @@ export default async function ProductCard({ product }: { product: IProduct }) {
         <IconLabel /> IDR {product.price}
       </p>
 
-      <button className="btn-action">VIEW MORE</button>
+      <Button id={product.id} />
     </div>
   );
 }
