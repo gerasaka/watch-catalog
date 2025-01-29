@@ -1,6 +1,8 @@
 import { IconLabel } from '@/icons/label';
 import { IconStarSolid } from '@/icons/star';
+import { formatPrice } from '@/utils/functions';
 import { IProduct } from '@/utils/types';
+import Image from 'next/image';
 import Button from '../button';
 import styles from './styles.module.scss';
 
@@ -24,23 +26,14 @@ export default async function ProductCard({ product }: { product: IProduct }) {
         <div className={styles.images}>
           {product.images.map((src, i) => {
             return (
-              //   <Image
-              //   key={i}
-              //   className={styles.logo}
-              //   src={src}
-              //   alt={product.name + 'preview image' + i}
-              //   width={100}
-              //   height={100}
-              //   loading="lazy"
-              // />
-              <img
+              <Image
                 key={i}
+                className={styles.logo}
                 src={src}
                 alt={product.name + 'preview image' + i}
-                role="presentation"
-                loading="lazy"
                 width={100}
                 height={100}
+                loading="lazy"
               />
             );
           })}
@@ -49,7 +42,7 @@ export default async function ProductCard({ product }: { product: IProduct }) {
 
       <p className="text-max-lines-2">{product.name}</p>
       <p className={`${styles.price} text-light`}>
-        <IconLabel /> IDR {product.price}
+        <IconLabel /> IDR {formatPrice(product.price)}
       </p>
 
       <Button id={product.id} />
