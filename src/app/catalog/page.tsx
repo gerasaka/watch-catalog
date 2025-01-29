@@ -8,7 +8,7 @@ export default async function CatalogPage() {
   return (
     <>
       <h1>Product Catalog</h1>
-      <p className={styles.subtitle}>Find the best watch for your life!</p>
+      <p className="text-light">Find the best watch for your life!</p>
 
       <div className={styles.catalogueContainer}>
         {products?.map((product) => {

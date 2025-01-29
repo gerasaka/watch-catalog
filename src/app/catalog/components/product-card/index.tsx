@@ -1,4 +1,4 @@
-import { IconLabelSolid } from '@/icons/label';
+import { IconLabel } from '@/icons/label';
 import { IconStarSolid } from '@/icons/star';
 import { IProduct } from '@/utils/types';
 import styles from './styles.module.scss';
@@ -15,7 +15,7 @@ export default async function ProductCard({ product }: { product: IProduct }) {
           >
             {product.rating}
           </span>
-          <span>
+          <span className="text-light">
             <IconStarSolid /> rating
           </span>
         </div>
@@ -47,11 +47,11 @@ export default async function ProductCard({ product }: { product: IProduct }) {
       </div>
 
       <p className="text-max-lines-2">{product.name}</p>
-      <p className={styles.price}>
-        <IconLabelSolid /> IDR {product.price}
+      <p className={`${styles.price} text-light`}>
+        <IconLabel /> IDR {product.price}
       </p>
 
-      <button>View More</button>
+      <button className="btn-action">VIEW MORE</button>
     </div>
   );
 }
