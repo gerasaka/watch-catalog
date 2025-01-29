@@ -45,7 +45,7 @@ export default function Specifications({ specs }: { specs: ISpecification }) {
       </div>
 
       <div className={`${styles.card} ${styles.looks}`}>
-        <IconClock style={{ color: specs.dial_color }} />
+        <IconClock />
         <div>
           <p>Perfect your style with</p>
           <span style={{ color: specs.dial_color }}>{specs.dial_color}</span> dial{' '}
