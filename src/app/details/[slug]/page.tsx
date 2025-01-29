@@ -1,10 +1,10 @@
-import { IconClock } from '@/icons/clock';
-import { IconCog } from '@/icons/cog';
-import { IconDrop } from '@/icons/drop';
 import { IconStarSolid } from '@/icons/star';
-import { IconWatch } from '@/icons/watch';
 import { getProductDetails, getProducts, getProductSpecs } from '@/utils/actions';
+import { formatPrice } from '@/utils/functions';
 import { redirect } from 'next/navigation';
+import ColorVariant from './components/color-variant';
+import Preview from './components/preview';
+import Specifications from './components/specifications';
 import styles from './styles.module.scss';
 
 export const dynamicParams = false;
@@ -23,19 +23,13 @@ export default async function DetailsPage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className={styles.product}>
-      <div className={styles.preview}>
-        <img src={product.images[0]} alt="" height={300} width={300} />
-
-        <span className={styles.items}>
-          {product.images.map((src) => {
-            return <img src={src} alt="" height={100} width={100} />;
-          })}
-        </span>
-      </div>
+      <Preview product={product} />
 
       <div className={styles.details}>
         <h1 className="text-max-lines-2">{product.name}</h1>
-        <p>{product.price}</p>
+        <p className={styles.price}>IDR {formatPrice(product.price)}</p>
+
+        <hr />
 
         <div
           className={`${styles.rating} ${
@@ -46,77 +40,14 @@ export default async function DetailsPage({ params }: { params: Promise<{ slug: 
           {product.rating}
         </div>
 
-        {product.colors && (
-          <div className={styles.color}>
-            <p>Color</p>
+        <hr />
 
-            <div className={styles.container}>
-              {product.colors.map((color, i) => {
-                return (
-                  <span
-                    key={product.id + '+color+' + i}
-                    className={styles.colorItem}
-                    style={{ backgroundColor: color }}
-                  ></span>
-                );
-              })}
-            </div>
-          </div>
-        )}
+        {product.colors && <ColorVariant colors={product.colors} />}
 
-        <button>GET YOURS!</button>
+        <button className="btn-action">GET YOURS</button>
       </div>
 
-      <div className={styles.specs}>
-        <div className={`${styles.cardFill} ${styles.brand}`}>
-          <div>
-            <IconWatch />
-            <p>New Series from</p>
-          </div>
-
-          <span>
-            <p>{specs.brand}</p>
-            <p>{specs.brand}</p>
-          </span>
-        </div>
-
-        <div className={`${styles.card}`}>
-          <div>
-            <IconDrop />
-            <p>Water Resistance</p>
-          </div>
-
-          <span>
-            <p>{specs.water_resistance}</p>
-          </span>
-        </div>
-
-        <div className={`${styles.card}`}>
-          <div>
-            <IconCog />
-            <p>Built With</p>
-          </div>
-
-          <span>
-            <p>
-              {specs.case_material} & {specs.band_material}
-            </p>
-          </span>
-        </div>
-
-        <div className={`${styles.card}`}>
-          <div>
-            <IconClock />
-            <p>
-              Perfect your style with
-              <span>
-                {specs.dial_color} {specs.movement}
-              </span>
-              watch
-            </p>
-          </div>
-        </div>
-      </div>
+      <Specifications specs={specs} />
     </div>
   );
 }

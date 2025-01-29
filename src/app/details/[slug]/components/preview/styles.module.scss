@@ -1,0 +1,42 @@
+@use '@/styles/mixins' as bp;
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .items {
+    display: flex;
+    gap: 1rem;
+    border: var(--border);
+    border-radius: 1rem;
+
+    img {
+      padding: 0.5rem;
+
+      &:not(:last-child) {
+        border-right: var(--border);
+      }
+    }
+  }
+
+  @include bp.tablet {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    img:first-child {
+      margin: auto;
+    }
+
+    .items {
+      flex-direction: column;
+
+      img:not(:last-child) {
+        border-right: none;
+        border-bottom: var(--border);
+      }
+    }
+  }
+}

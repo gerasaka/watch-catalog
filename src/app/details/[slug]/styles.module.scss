@@ -4,74 +4,23 @@
   display: grid;
   gap: 2rem;
 
-  .preview {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    .items {
-      display: flex;
-      gap: 1rem;
-      border: 1px solid #bdbdc6;
-      border-radius: 1rem;
-
-      img {
-        padding: 0.5rem;
-
-        &:not(:last-child) {
-          border-right: 1px solid #bdbdc6;
-        }
-      }
-    }
-
-    @include bp.tablet {
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      align-items: flex-start;
-
-      img:first-child {
-        margin: auto;
-      }
-
-      .items {
-        flex-direction: column;
-
-        img:not(:last-child) {
-          border-right: none;
-          border-bottom: 1px solid #bdbdc6;
-        }
-      }
-    }
+  hr {
+    margin: 0.5rem 0;
   }
 
   .details {
+    .price {
+      margin-top: 0.5rem;
+    }
+
     .rating {
       display: flex;
       align-items: center;
       gap: 0.25rem;
     }
 
-    .color {
-      color: var(--text-light);
-      margin-top: 0.75rem;
-      font-style: italic;
-      font-size: 0.75rem;
-
-      .container {
-        font-style: normal;
-        display: flex;
-        gap: 0.25rem;
-        margin-top: 0.25rem;
-      }
-
-      .colorItem {
-        display: inline-block;
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 100%;
-        border: 1px solid #cdcdcd;
-      }
+    button {
+      margin-top: 1.5rem;
     }
 
     @include bp.tablet {
@@ -83,82 +32,8 @@
     }
   }
 
-  .specs {
-    // padding: 1.5rem;
-    // border: 1px solid #bdbdc6;
-    // border-radius: 1.5rem;
-
-    display: grid;
-    gap: 1rem;
-
-    .brand {
-      span {
-        position: relative;
-        text-align: end;
-
-        p:first-child {
-          position: absolute;
-          left: 0;
-          font-size: 5rem;
-          font-weight: bolder;
-          // text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-          //   1px 1px 0 #000;
-
-          -webkit-text-stroke: 3px rgba(0, 0, 0, 0.1);
-          -webkit-text-fill-color: transparent;
-          transform: translate(-2.5rem, 0);
-        }
-
-        p:last-child {
-          position: relative;
-          font-size: 2.5rem;
-          font-weight: bolder;
-        }
-      }
-    }
-
-    @include bp.tablet {
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-
-      .brand {
-        grid-row: 1 / 3;
-      }
-    }
-  }
-
-  .card,
-  .cardFill {
-    padding: 1rem;
-    border-radius: 1rem;
-    overflow: hidden;
-
-    div {
-      display: flex;
-      gap: 0.25rem;
-      align-items: center;
-    }
-  }
-
-  .card {
-    border: 1px solid #bdbdc6;
-
-    span p {
-      text-align: end;
-      font-size: 1.5rem;
-    }
-  }
-
-  .cardFill {
-    background-color: #eaeaf2;
-  }
-
   @include bp.tablet {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
-    .specs {
-      grid-column: 1 / 3;
-    }
   }
 }
