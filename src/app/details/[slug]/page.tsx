@@ -2,6 +2,7 @@ import { IconStarSolid } from '@/icons/star';
 import { getProductDetails, getProducts, getProductSpecs } from '@/utils/actions';
 import { formatPrice } from '@/utils/functions';
 import { redirect } from 'next/navigation';
+import Back from './components/back';
 import ColorVariant from './components/color-variant';
 import Preview from './components/preview';
 import Specifications from './components/specifications';
@@ -22,32 +23,36 @@ export default async function DetailsPage({ params }: { params: Promise<{ slug: 
   if (!product || !specs) redirect('/catalog'); // TODO: handle error api
 
   return (
-    <div className={styles.product}>
-      <Preview product={product} />
+    <>
+      <Back />
 
-      <div className={styles.details}>
-        <h1 className="text-max-lines-2">{product.name}</h1>
-        <p className={styles.price}>IDR {formatPrice(product.price)}</p>
+      <div className={styles.product}>
+        <Preview product={product} />
 
-        <hr />
+        <div className={styles.details}>
+          <h1 className="text-max-lines-2">{product.name}</h1>
+          <p className={styles.price}>IDR {formatPrice(product.price)}</p>
 
-        <div
-          className={`${styles.rating} ${
-            product.rating < 1.5 ? 'text-red' : product.rating < 4 ? 'text-orange' : 'text-green'
-          }`}
-        >
-          <IconStarSolid />
-          {product.rating}
+          <hr />
+
+          <div
+            className={`${styles.rating} ${
+              product.rating < 1.5 ? 'text-red' : product.rating < 4 ? 'text-orange' : 'text-green'
+            }`}
+          >
+            <IconStarSolid />
+            {product.rating}
+          </div>
+
+          <hr />
+
+          {product.colors && <ColorVariant colors={product.colors} />}
+
+          <button className="btn-action">GET YOURS</button>
         </div>
 
-        <hr />
-
-        {product.colors && <ColorVariant colors={product.colors} />}
-
-        <button className="btn-action">GET YOURS</button>
+        <Specifications specs={specs} />
       </div>
-
-      <Specifications specs={specs} />
-    </div>
+    </>
   );
 }

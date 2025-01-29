@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 export default function Preview({ product }: { product: IProduct }) {
   const [highlighted, setHiglight] = useState(product.images[0]);
 
-  const clickHandler = (src: string) => {
+  const changeHighlight = (src: string) => {
     setHiglight(src);
   };
 
@@ -32,7 +32,7 @@ export default function Preview({ product }: { product: IProduct }) {
               alt={product.name + 'preview image' + i}
               height={100}
               width={100}
-              onClick={() => clickHandler(src)}
+              onClick={() => changeHighlight(src)}
             />
           );
         })}

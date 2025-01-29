@@ -41,25 +41,51 @@
   }
 }
 
-.btn-action {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--primary);
-  border-radius: 100px;
-  background-color: white;
-  color: var(--primary);
-  text-align: center;
+.btn {
+  background-color: transparent;
+  border: 1px solid transparent;
 
+  color: var(--primary);
   cursor: pointer;
   transition: 0.2s ease-in-out;
 
-  &:hover {
-    background-color: var(--primary);
-    color: white;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  &-action {
+    @extend .btn;
+    width: 100%;
+    border: 1px solid var(--primary);
+    border-radius: 100px;
+    background-color: white;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    &:active {
+      background-color: var(--foreground);
+      color: white;
+    }
   }
 
-  &:active {
-    background-color: var(--foreground);
-    color: white;
+  &-ghost {
+    @extend .btn;
+    font-size: 0.75rem;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      border: 1px solid var(--primary);
+    }
+
+    &:active {
+      background-color: var(--foreground);
+      color: white;
+    }
   }
 }
