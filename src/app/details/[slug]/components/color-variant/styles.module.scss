@@ -1,0 +1,19 @@
+.color {
+  margin-top: 0.75rem;
+  font-style: italic;
+  font-size: 0.75rem;
+
+  .container {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .colorItem {
+    display: inline-block;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 100%;
+    border: 1px solid #cdcdcd;
+  }
+}

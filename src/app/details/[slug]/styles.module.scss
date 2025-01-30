@@ -1,0 +1,39 @@
+@use '@/styles/mixins' as bp;
+
+.product {
+  display: grid;
+  gap: 2rem;
+
+  hr {
+    margin: 0.5rem 0;
+  }
+
+  .details {
+    .price {
+      margin-top: 0.5rem;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+    }
+
+    @include bp.tablet {
+      margin-top: 2rem;
+
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  @include bp.tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,23 @@
+@mixin mobile {
+  @media (width >= 40rem) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width >= 48rem) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (width >= 64rem) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @media (width >= 80rem) {
+    @content;
+  }
+}

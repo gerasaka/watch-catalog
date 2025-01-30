@@ -1,0 +1,104 @@
+@use '@/styles/mixins' as bp;
+
+.specs {
+  display: grid;
+  grid-template-areas:
+    'brand'
+    'waterResistance'
+    'materials'
+    'looks';
+  gap: 1rem;
+
+  .card {
+    padding: 1rem;
+    overflow: hidden;
+    border: 1px solid #bdbdc6;
+    border-radius: 1.5rem;
+
+    .title {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
+  }
+
+  .brand {
+    grid-area: brand;
+    border: none;
+    background-color: #eaeaf2;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+
+    span {
+      position: relative;
+      text-align: end;
+
+      p:first-child {
+        position: absolute;
+        left: 0;
+        font-size: 5rem;
+        font-weight: bolder;
+        // text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        //   1px 1px 0 #000;
+
+        -webkit-text-stroke: 3px rgba(0, 0, 0, 0.1);
+        -webkit-text-fill-color: transparent;
+        transform: translate(-2.5rem, 0);
+      }
+
+      p:last-child {
+        position: relative;
+        font-size: 2.5rem;
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .materials {
+    grid-area: materials;
+
+    span p {
+      text-align: end;
+      font-size: 1.5rem;
+    }
+  }
+
+  .waterResistance {
+    grid-area: waterResistance;
+
+    span p {
+      text-align: end;
+      font-size: 1.5rem;
+    }
+  }
+
+  .looks {
+    grid-area: looks;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    svg {
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  @include bp.tablet {
+    grid-column: 1 / 3;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      'brand brand waterResistance waterResistance . .'
+      'brand brand waterResistance waterResistance looks looks'
+      'brand brand waterResistance waterResistance looks looks'
+      'brand brand materials materials looks looks'
+      'brand brand materials materials looks looks'
+      '. . materials materials looks looks';
+  }
+}
