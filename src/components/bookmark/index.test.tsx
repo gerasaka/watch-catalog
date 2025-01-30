@@ -1,7 +1,7 @@
 import Bookmark from '@/components/bookmark';
 import { BookmarkProvider, useBookmarks } from '@/store/bookmark-context';
 import { IProduct } from '@/utils/types';
-import { render, renderHook, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 const mockProduct: IProduct = {
@@ -15,19 +15,29 @@ const mockProduct: IProduct = {
 
 describe('Bookmark Component', () => {
   it('should update bookmark state when clicked', async () => {
-    render(<Bookmark product={mockProduct} />, { wrapper: BookmarkProvider });
+    render(
+      <BookmarkProvider>
+        <TestComponent />
+      </BookmarkProvider>
+    );
 
     const button = screen.getByRole('button');
 
-    expect(button).toBeDefined();
+    fireEvent.click(button);
+    expect(screen.getByText(/Bookmarked: true/)).toBeDefined();
 
-    const { result } = renderHook(() => useBookmarks(), { wrapper: BookmarkProvider });
-    expect(result.current.isBookmarked(mockProduct.id)).toBe(false);
-
-    button.click();
-    expect(result.current.isBookmarked(mockProduct.id)).toBe(true);
-
-    button.click();
-    expect(result.current.isBookmarked(mockProduct.id)).toBe(false);
+    fireEvent.click(button);
+    expect(screen.getByText(/Bookmarked: false/)).toBeDefined();
   });
 });
+
+// Helper component to track `isBookmarked` state
+function TestComponent() {
+  const { isBookmarked } = useBookmarks();
+  return (
+    <div>
+      <Bookmark product={mockProduct} />
+      <p>Bookmarked: {isBookmarked(mockProduct.id) ? 'true' : 'false'}</p>
+    </div>
+  );
+}
