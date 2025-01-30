@@ -58,16 +58,21 @@
     }
   }
 
-  .price {
+  .info {
     margin: 0.5rem 0 1rem;
-    padding: 0.25rem 0.5rem;
-    background-color: #f2f5ff;
-    border-radius: 0.25rem;
-    width: max-content;
-    font-size: 0.75rem;
-
     display: flex;
-    align-items: center;
-    gap: 0.25rem;
+    justify-content: space-between;
+
+    .price {
+      padding: 0.25rem 0.5rem;
+      background-color: #f2f5ff;
+      border-radius: 0.25rem;
+      width: max-content;
+      font-size: 0.75rem;
+
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
   }
 }

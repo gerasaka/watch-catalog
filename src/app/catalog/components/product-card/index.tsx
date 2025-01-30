@@ -1,3 +1,4 @@
+import Bookmark from '@/components/bookmark';
 import { IconLabel } from '@/icons/label';
 import { IconStarSolid } from '@/icons/star';
 import { formatPrice } from '@/utils/functions';
@@ -41,9 +42,13 @@ export default async function ProductCard({ product }: { product: IProduct }) {
       </div>
 
       <p className="text-max-lines-2">{product.name}</p>
-      <p className={`${styles.price} text-light`}>
-        <IconLabel /> IDR {formatPrice(product.price)}
-      </p>
+      <div className={styles.info}>
+        <p className={`${styles.price} text-light`}>
+          <IconLabel /> IDR {formatPrice(product.price)}
+        </p>
+
+        <Bookmark product={product} />
+      </div>
 
       <Button id={product.id} />
     </div>
