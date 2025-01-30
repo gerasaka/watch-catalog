@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Button from '../button';
 import styles from './styles.module.scss';
 
-export default async function ProductCard({ product }: { product: IProduct }) {
+export default function ProductCard({ product }: { product: IProduct }) {
   return (
     <div className={styles.productItem}>
       <div className={styles.hero}>
