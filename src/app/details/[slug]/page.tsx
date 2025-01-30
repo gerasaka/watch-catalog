@@ -1,3 +1,5 @@
+import Bookmark from '@/components/bookmark';
+import { IconLabel } from '@/icons/label';
 import { IconStarSolid } from '@/icons/star';
 import { getProductDetails, getProducts, getProductSpecs } from '@/utils/actions';
 import { formatPrice } from '@/utils/functions';
@@ -31,20 +33,29 @@ export default async function DetailsPage({ params }: { params: Promise<{ slug: 
 
         <div className={styles.details}>
           <h1 className="text-max-lines-2">{product.name}</h1>
-          <p className={styles.price}>IDR {formatPrice(product.price)}</p>
-
-          <hr />
-
-          <div
-            className={`${styles.rating} ${
-              product.rating < 1.5 ? 'text-red' : product.rating < 4 ? 'text-orange' : 'text-green'
-            }`}
-          >
-            <IconStarSolid />
-            {product.rating}
+          <div className={styles.price}>
+            <IconLabel />
+            <p>IDR {formatPrice(product.price)}</p>
           </div>
 
           <hr />
+
+          <div className={styles.info}>
+            <div
+              className={`${styles.rating} ${
+                product.rating < 1.5
+                  ? 'text-red'
+                  : product.rating < 3.5
+                  ? 'text-orange'
+                  : 'text-green'
+              }`}
+            >
+              <IconStarSolid />
+              {product.rating}
+            </div>
+
+            <Bookmark product={product} />
+          </div>
 
           {product.colors && <ColorVariant colors={product.colors} />}
 

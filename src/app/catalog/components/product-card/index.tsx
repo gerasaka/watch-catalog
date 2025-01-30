@@ -14,7 +14,11 @@ export default async function ProductCard({ product }: { product: IProduct }) {
         <div className={styles.rating}>
           <span
             className={
-              product.rating < 1.5 ? 'text-red' : product.rating < 4 ? 'text-orange' : 'text-green'
+              product.rating < 1.5
+                ? 'text-red'
+                : product.rating < 3.5
+                ? 'text-orange'
+                : 'text-green'
             }
           >
             {product.rating}

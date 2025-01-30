@@ -11,15 +11,27 @@
   .details {
     .price {
       margin-top: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
     }
 
-    .rating {
+    .info {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      justify-content: space-between;
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
     }
 
-    button {
+    > button {
       margin-top: 1.5rem;
     }
 
