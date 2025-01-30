@@ -7,14 +7,18 @@ import Image from 'next/image';
 import Button from '../button';
 import styles from './styles.module.scss';
 
-export default async function ProductCard({ product }: { product: IProduct }) {
+export default function ProductCard({ product }: { product: IProduct }) {
   return (
     <div className={styles.productItem}>
       <div className={styles.hero}>
         <div className={styles.rating}>
           <span
             className={
-              product.rating < 1.5 ? 'text-red' : product.rating < 4 ? 'text-orange' : 'text-green'
+              product.rating < 1.5
+                ? 'text-red'
+                : product.rating < 3.5
+                ? 'text-orange'
+                : 'text-green'
             }
           >
             {product.rating}
