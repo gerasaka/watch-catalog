@@ -48,8 +48,15 @@ export default function Specifications({ specs }: { specs: ISpecification }) {
         <IconClock />
         <div>
           <p>Perfect your style with</p>
-          <span style={{ color: specs.dial_color }}>{specs.dial_color}</span> dial{' '}
-          <span>{specs.movement}</span>
+          <span
+            style={{
+              color: specs.dial_color,
+              WebkitTextStroke: specs.dial_color === 'White' ? '1px darkgray' : 'none',
+            }}
+          >
+            {specs.dial_color}
+          </span>{' '}
+          dial <span>{specs.movement}</span>
           <p>watch</p>
         </div>
       </div>
